@@ -1,0 +1,12 @@
+API_KEY = <PROWL API KEY>
+
+configure do |c|
+  c.nick      = <BOT_NICK>
+  c.server    = "irc.freenode.net"
+  c.port      = 6667
+  c.password  = <PASSWORD>
+end
+
+on :connect do
+  join "<ROOM> <PASSWORD>"
+end
