@@ -17,7 +17,7 @@ helpers do
 end
 
 on :channel, /!notify_me/ do
-  @notification = true
+  @notification[channel] = true
 end
 
 on :channel, /!kill irc_watchr/ do
@@ -25,8 +25,8 @@ on :channel, /!kill irc_watchr/ do
 end
 
 on :channel do
-  if @notification && @authorized.include?(nick)
+  if @notification[channel] && @authorized.include?(nick)
     send_message(channel, nick, message)
-    @notification = false
+    @notification[channel] = false
   end
 end
