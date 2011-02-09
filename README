@@ -1,2 +1,3 @@
 == IRC Watchr
 
+Sits in an IRC channel and sends a prowl message when someone says something.

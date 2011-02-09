@@ -18,5 +18,5 @@ end
 
 on :channel do
   send_message(channel, nick, message)
-  quit "My work here is done. jordanbyron will be with you shortly."
+  quit "My work here is done. Someone will be with you shortly."
 end
