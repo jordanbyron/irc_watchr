@@ -2,7 +2,7 @@ require "rubygems"
 require "bundler/setup"
 
 require 'isaac'
-require "#{File.dirname(__FILE__)}/bot_config"
+require_relative "bot_config"
 require 'rest-client'
 
 helpers do
@@ -16,7 +16,17 @@ helpers do
   end
 end
 
+on :channel, /!notify_me/ do
+  @notification = true
+end
+
+on :channel, /!kill irc_watchr/ do
+  quit "Goodbye cruel world!" if @authorized.include?(nick)
+end
+
 on :channel do
-  send_message(channel, nick, message)
-  quit "My work here is done. Someone will be with you shortly."
+  if @notification && @authorized.include?(nick)
+    send_message(channel, nick, message)
+    @notification = false
+  end
 end

@@ -8,5 +8,7 @@ configure do |c|
 end
 
 on :connect do
+  @notification = true
+  @authorized   = [<HANDLE>]
   join "<ROOM> <PASSWORD>"
 end
